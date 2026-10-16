@@ -6,6 +6,11 @@ import { layouts, views } from './views'
 import type { View } from './views'
 
 const SPEED = Math.PI / 2
+const spots = [
+  { max: 0.7, song: 0.77, artist: 0.805, solo: 0.787 },
+  { max: 0.9, song: 0.79, artist: 0.825, solo: 0.807 },
+  { max: Infinity, song: 0.82, artist: 0.855, solo: 0.837 },
+]
 
 type Pose = { yaw: number; pitch: number; roll: number; zoom: number; ox: number; oy: number; dx: number; dy: number; sx: number; sy: number; show: number; wide: number; high: number }
 
@@ -148,7 +153,9 @@ export class Stage {
 
   format(width: number, height: number) {
     this.ratio = width / height
+    this.resize()
     this.write()
+    this.draw()
   }
 
   caption(song: string, artist: string, songon: boolean, artiston: boolean) {
@@ -253,7 +260,9 @@ export class Stage {
 
   private write() {
     const height = this.labelsize
-    const width = Math.max(512, Math.round(height * this.camera.aspect))
+    const ratio = this.ratio || this.camera.aspect
+    const width = Math.max(512, Math.round(height * ratio))
+    const spot = spots.find((item) => ratio <= item.max) ?? spots[2]
     if (this.labelcanvas.width !== width || this.labelcanvas.height !== height) {
       this.labelcanvas.width = width
       this.labelcanvas.height = height
@@ -290,15 +299,15 @@ export class Stage {
     }
     if (rows.length === 2) {
       ctx.font = `600 ${fit(this.song, 600, height * 0.04)}px system-ui, -apple-system, BlinkMacSystemFont, sans-serif`
-      ctx.fillText(this.song, width / 2, height * 0.72)
+      ctx.fillText(this.song, width / 2, height * spot.song)
       ctx.font = `400 ${fit(this.artist, 400, height * 0.022)}px system-ui, -apple-system, BlinkMacSystemFont, sans-serif`
-      ctx.fillText(this.artist, width / 2, height * 0.755)
+      ctx.fillText(this.artist, width / 2, height * spot.artist)
     } else if (rows.length && this.songon && this.song) {
       ctx.font = `600 ${fit(this.song, 600, height * 0.04)}px system-ui, -apple-system, BlinkMacSystemFont, sans-serif`
-      ctx.fillText(this.song, width / 2, height * 0.735)
+      ctx.fillText(this.song, width / 2, height * spot.solo)
     } else if (rows.length) {
       ctx.font = `400 ${fit(this.artist, 400, height * 0.022)}px system-ui, -apple-system, BlinkMacSystemFont, sans-serif`
-      ctx.fillText(this.artist, width / 2, height * 0.735)
+      ctx.fillText(this.artist, width / 2, height * spot.solo)
     }
     ctx.shadowBlur = 0
     ctx.textAlign = 'right'
@@ -306,7 +315,7 @@ export class Stage {
     ctx.fillStyle = 'rgba(255,255,255,0.8)'
     ctx.fillText('VINYL', width * 0.91, height * 0.84)
     ctx.textAlign = 'left'
-    ctx.font = `400 ${height * 0.013}px system-ui, -apple-system, BlinkMacSystemFont, sans-serif`
+    ctx.font = `400 ${height * 0.018}px system-ui, -apple-system, BlinkMacSystemFont, sans-serif`
     ctx.fillStyle = 'rgba(255,255,255,0.58)'
     ctx.fillText('vinyl.aryan.am', width * 0.09, height * 0.18)
     this.labelmap.needsUpdate = true

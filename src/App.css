@@ -33,7 +33,7 @@
   border-right: 1px solid var(--line);
   color: var(--strong);
   font-family: 'Clash Display', sans-serif;
-  font-size: 38px;
+  font-size: 28px;
   font-weight: 700;
   line-height: 1;
   letter-spacing: -1px;
@@ -54,10 +54,22 @@
   min-width: 0;
 }
 
-.search svg {
+.searchicon {
+  display: grid;
+  width: 20px;
+  height: 24px;
+  flex: none;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.searchicon svg {
   width: 18px;
   height: 18px;
-  flex: none;
   fill: none;
   stroke: var(--ink);
   stroke-width: 2;
@@ -374,6 +386,10 @@
   text-decoration: none;
 }
 
+.foot .made {
+  display: none;
+}
+
 .foot > :last-child {
   border-right: 0;
 }
@@ -435,38 +451,163 @@ audio {
 
 @media (max-width: 760px) {
   .page {
-    --side: 210px;
-    grid-template-columns: 210px minmax(0, 1fr);
-    grid-template-rows: 56px minmax(0, 1fr) 32px;
+    --side: 0px;
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 56px minmax(220px, 1fr) minmax(0, .8fr) 76px;
   }
 
   .head {
-    grid-template-columns: var(--side) minmax(0, 1fr) 145px;
+    grid-template-columns: minmax(0, 1fr) 48px;
+  }
+
+  .buy {
+    display: none;
+  }
+
+  .brand {
+    grid-column: 1;
+    padding: 0 12px;
+    font-size: 22px;
+  }
+
+  .find {
+    grid-column: 2;
+    width: 48px;
+    justify-self: end;
+  }
+
+  .head.mobileopen {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .head.mobileopen .brand {
+    display: none;
+  }
+
+  .head.mobileopen .find {
+    grid-column: 1;
+    width: 100%;
   }
 
   .results {
     top: 56px;
-    bottom: 32px;
-    left: calc(var(--side) - 1px);
-  }
-
-  .brand {
-    padding: 0 18px;
-    font-size: 30px;
+    bottom: 76px;
+    left: 0;
   }
 
   .search {
-    gap: 7px;
-    padding: 0 12px;
-  }
-
-  .search input,
-  .buy {
-    font-size: 11px;
-  }
-
-  .buy {
+    width: 44px;
+    gap: 6px;
     padding: 0 10px;
+  }
+
+  .search input {
+    display: none;
+    font-size: 9px;
+  }
+
+  .head.mobileopen .search {
+    width: 100%;
+  }
+
+  .head.mobileopen .search input {
+    display: block;
+    width: 0;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .side {
+    grid-column: 1;
+    grid-row: 3;
+    border-top: 1px solid var(--line);
+    border-right: 0;
+  }
+
+  .space {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .foot {
+    grid-column: 1;
+    grid-row: 4;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: 44px 31px;
+    font-size: 8px;
+  }
+
+  .foot .player {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 56px 72px 88px;
+    padding: 0;
+    border-right: 0;
+  }
+
+  .foot .now.maker {
+    display: none;
+  }
+
+  .foot .player:has(.now.maker) {
+    grid-template-columns: 56px 72px 88px minmax(0, 1fr);
+  }
+
+  .foot .now {
+    grid-column: 1;
+    padding: 0 8px 0 12px;
+    font-size: 8px;
+  }
+
+  .foot .playbtn:first-of-type {
+    grid-column: 2;
+    width: auto;
+  }
+
+  .foot .playbtn:nth-of-type(2) {
+    grid-column: 3;
+  }
+
+  .foot .clock {
+    grid-column: 4;
+    padding: 0 6px;
+    font-size: 7px;
+  }
+
+  .foot .player:has(.now.maker) .playbtn:first-of-type {
+    grid-column: 1;
+  }
+
+  .foot .player:has(.now.maker) .playbtn:nth-of-type(2) {
+    grid-column: 2;
+  }
+
+  .foot .player:has(.now.maker) .clock {
+    grid-column: 3;
+  }
+
+  .foot > a {
+    grid-row: 2;
+    border-top: 1px solid var(--line);
+  }
+
+  .foot > a:first-of-type {
+    grid-column: 1;
+  }
+
+  .foot > a:last-of-type {
+    grid-column: 3;
+  }
+
+  .foot .made {
+    display: flex;
+    grid-column: 2;
+    grid-row: 2;
+    border-top: 1px solid var(--line);
+    white-space: nowrap;
+    font-size: 7px;
   }
 
   .group h2 {
@@ -488,26 +629,8 @@ audio {
     width: min(94cqw, 620px, calc(94cqh * var(--ratio)));
   }
 
-  .foot {
-    grid-template-columns: 1fr 110px 120px;
-    font-size: 9px;
-  }
-
-  .foot .player {
-    padding-left: 8px;
-  }
-
-  .playbtn {
+  .foot .playbtn {
     padding: 0 5px;
-    font-size: 7px;
-  }
-
-  .playbtn:first-of-type {
-    width: 50px;
-  }
-
-  .clock {
-    padding: 0 4px;
     font-size: 7px;
   }
 }

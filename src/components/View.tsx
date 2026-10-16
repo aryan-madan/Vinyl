@@ -22,9 +22,11 @@ export function View({ stage, tune, view, back, frame, spin, songon, artiston }:
   useEffect(() => {
     if (!holder.current) return
     let live = true
+    let room: Stage | null = null
     import('../lib/stage').then(({ Stage: Model }) => {
       if (!live || !holder.current) return
-      const room = new Model(holder.current)
+      holder.current.replaceChildren()
+      room = new Model(holder.current)
       stage.current = room
       setready(true)
     }).catch(() => {
@@ -32,7 +34,6 @@ export function View({ stage, tune, view, back, frame, spin, songon, artiston }:
     })
     return () => {
       live = false
-      const room = stage.current
       if (room) {
         room.destroy()
         if (stage.current === room) stage.current = null

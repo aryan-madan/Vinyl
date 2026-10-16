@@ -20,12 +20,13 @@ export function Foot({ tune, playing, time, duration, toggle, reset }: Props) {
   return (
     <footer className="foot">
       <div className="player">
-        <span className="now">{tune ? `${tune.song} — ${tune.artist}`.toUpperCase() : 'MADE BY ARYAN MADAN'}</span>
+        <span className={`now ${tune ? '' : 'maker'}`}>{tune ? `${tune.song} — ${tune.artist}`.toUpperCase() : 'MADE BY ARYAN MADAN'}</span>
         <button className="playbtn" disabled={!ready} onClick={toggle}>{playing ? 'PAUSE' : 'PLAY'}</button>
         <button className="playbtn" disabled={!ready} onClick={reset}>RESTART</button>
         <span className="clock">{stamp(time)} / {stamp(duration)}</span>
       </div>
       <a href="https://instagram.com/aryanaintreal" target="_blank" rel="noreferrer">INSTAGRAM</a>
+      <span className="made">MADE BY ARYAN MADAN</span>
       <a href="https://aryan.am" target="_blank" rel="noreferrer">PORTFOLIO</a>
     </footer>
   )
