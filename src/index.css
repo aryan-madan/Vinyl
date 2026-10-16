@@ -1,0 +1,66 @@
+@import url('https://api.fontshare.com/v2/css?f[]=azeret-mono@400,500,700,800&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@700&display=swap');
+@import 'tailwindcss';
+
+:root {
+  color-scheme: light;
+  --paper: #fff;
+  --ink: #303030;
+  --strong: #1c1c1c;
+  --heading: #363636;
+  --line: #e7e7e7;
+  --rowline: #ededed;
+  --hover: #f6f6f6;
+  --muted: #999;
+  --quiet: #888;
+  --marker: #222;
+  --fill: #bbb;
+  --error: #a33;
+  --edge: #d2d0cb;
+  font-family: 'Azeret Mono', monospace;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #101010;
+    --ink: #e8e8e8;
+    --strong: #f2f2f2;
+    --heading: #ddd;
+    --line: #303030;
+    --rowline: #292929;
+    --hover: #202020;
+    --muted: #a2a2a2;
+    --quiet: #aaa;
+    --marker: #e8e8e8;
+    --fill: #555;
+    --error: #ff8585;
+    --edge: #414141;
+  }
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  min-width: 360px;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+}
