@@ -308,14 +308,14 @@ export class Stage {
       ctx.fillText(this.artist, width / 2, height * spot.solo)
     }
     ctx.shadowBlur = 0
-    ctx.textAlign = 'right'
+    ctx.textAlign = 'center'
     ctx.font = `700 ${height * 0.022}px 'Clash Display', sans-serif`
     ctx.fillStyle = 'rgba(255,255,255,0.8)'
-    ctx.fillText('VINYL', width * 0.91, height * 0.84)
-    ctx.textAlign = 'left'
+    ctx.fillText('VINYL', width / 2, height * 0.12)
+    ctx.textAlign = 'center'
     ctx.font = `400 ${height * 0.018}px system-ui, -apple-system, BlinkMacSystemFont, sans-serif`
     ctx.fillStyle = 'rgba(255,255,255,0.58)'
-    ctx.fillText('vinyl.aryan.am', width * 0.09, height * 0.18)
+    ctx.fillText('vinyl.aryan.am', width / 2, height * 0.94)
     this.labelmap.needsUpdate = true
   }
 
