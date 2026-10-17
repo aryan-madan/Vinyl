@@ -342,11 +342,6 @@
   box-shadow: 0 16px 44px #0003, 0 0 0 1px var(--edge);
 }
 
-.frame.blank {
-  visibility: hidden;
-  box-shadow: none;
-}
-
 .canvas {
   position: absolute;
   inset: 0;

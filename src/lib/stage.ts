@@ -71,7 +71,6 @@ export class Stage {
   private angle = 0
   private spinning = true
   private prior = true
-  private ready = false
   private busy = false
 
   constructor(holder: HTMLElement) {
@@ -101,7 +100,7 @@ export class Stage {
       mats.forEach((mat) => mat.dispose())
     })
     this.scene.environmentIntensity = 1.1
-    this.scene.background = new Color(0x0a0a0b)
+    this.scene.background = new Color(0x858585)
     const key = new DirectionalLight(0xffffff, 0.9)
     key.position.set(-2, 3, 5)
     const fill = new DirectionalLight(0xbfd4ff, 0.25)
@@ -131,7 +130,6 @@ export class Stage {
     for (const back of Object.values(this.plates)) back.dispose()
     this.plates = { art: plate(plain(img)), blur: plate(soft(img)), color: plate(wash(color)) }
     this.backdrop(this.mode)
-    this.ready = true
   }
 
   backdrop(mode: string) {
@@ -238,10 +236,10 @@ export class Stage {
     this.rig.rotation.set(pose.pitch, pose.yaw, pose.roll)
     this.rig.position.set(pose.ox, pose.oy, 0)
     this.disc.position.set(pose.dx, pose.dy, 0)
-    this.disc.visible = this.ready
+    this.disc.visible = true
     this.sleeve.position.set(pose.sx, pose.sy, 0)
     this.sleeve.scale.setScalar(Math.max(pose.show, 0.001))
-    this.sleeve.visible = this.ready && pose.show > 0.01
+    this.sleeve.visible = pose.show > 0.01
     this.camera.position.set(0, 0, this.dist())
     const height = 2 * Math.tan((this.camera.fov * Math.PI) / 360)
     this.label.position.set(0, 0, -1)

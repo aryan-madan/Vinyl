@@ -1,32 +1,40 @@
-# React + TypeScript + Vite
+# Turn Songs Into 3D Vinyl Artwork
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+I wanted a way to make my Instagram stories look cooler. Vinyl turns a song into a 3D record and sleeve, then lets you shape the scene into something ready to share.
 
-Currently, two official plugins are available:
+## Find a Song
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Search the iTunes catalog, pick a track, and play its preview while you build the artwork.
 
-## Expanding the Oxlint configuration
+## Build the Scene
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+
+Arrange the record and sleeve with preset views. The record has rotating grooves, album art on its label, and color picked from the cover. Choose a background and show or hide the song and artist text independently.
+
+## Make It Yours
+
+
+
+Choose a Story, Portrait, or Square frame. Drag to rotate the scene, scroll to zoom, and use the preset layouts to find a composition that fits.
+
+## Export
+
+
+
+Save high-resolution PNG artwork or a looping video. Pick a 4, 8, or 12 second loop; the app exports MP4 or WebM based on browser support.
+
+## Run Locally
+
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Built With
+
+React, TypeScript, Three.js, Tailwind CSS, GSAP, and Vite.
+
+Made with ❤️ by Ary

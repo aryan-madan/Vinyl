@@ -58,11 +58,11 @@ export function View({ stage, tune, view, back, frame, spin, songon, artiston }:
   useEffect(() => { if (ready) stage.current?.format(frame.width, frame.height) }, [ready, stage, frame])
   useEffect(() => { if (ready) stage.current?.backdrop(back) }, [ready, stage, back])
   useEffect(() => { if (ready) stage.current?.play(spin) }, [ready, stage, spin])
-  useEffect(() => { if (ready) stage.current?.caption(tune?.song ?? '', tune?.artist ?? '', songon, artiston) }, [ready, stage, tune, songon, artiston])
+  useEffect(() => { if (ready) stage.current?.caption(tune?.song ?? 'Pick a song', tune?.artist ?? 'Aryan Madan', songon, artiston) }, [ready, stage, tune, songon, artiston])
 
   return (
     <div className="arena">
-      <div className={`frame ${tune ? '' : 'blank'}`} style={{ '--w': frame.width, '--h': frame.height, '--ratio': frame.width / frame.height } as CSSProperties}>
+      <div className="frame" style={{ '--w': frame.width, '--h': frame.height, '--ratio': frame.width / frame.height } as CSSProperties}>
         <div className="canvas" ref={holder} />
         {note && <span className="viewerror">{note}</span>}
       </div>
