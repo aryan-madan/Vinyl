@@ -9,6 +9,8 @@ type Props = {
   setview: (view: number) => void
   back: number
   setback: (back: number) => void
+  finish: string
+  setfinish: (finish: string) => void
   frame: number
   setframe: (frame: number) => void
   spin: boolean
@@ -24,8 +26,13 @@ type Props = {
 }
 
 const loops = [1, 2, 3]
+const finishes = [
+  { key: 'color', name: 'COLOR' },
+  { key: 'translucent', name: 'TRANSLUCENT' },
+  { key: 'black', name: 'BLACK' },
+]
 
-export function Side({ tune, busy, note, view, setview, back, setback, frame, setframe, spin, setspin, songon, setsongon, artiston, setartiston, loop, setloop, progress, run }: Props) {
+export function Side({ tune, busy, note, view, setview, back, setback, finish, setfinish, frame, setframe, spin, setspin, songon, setsongon, artiston, setartiston, loop, setloop, progress, run }: Props) {
   return (
     <aside className="side">
       <section className="group">
@@ -39,6 +46,10 @@ export function Side({ tune, busy, note, view, setview, back, setback, frame, se
       <section className="group">
         <h2>BACKGROUND</h2>
         {backs.map((item, idx) => <button className={`listrow ${back === idx ? 'active' : ''}`} key={item.key} onClick={() => setback(idx)}><span>{item.name.toUpperCase()}</span></button>)}
+      </section>
+      <section className="group">
+        <h2>VINYL FINISH</h2>
+        {finishes.map((item) => <button className={`listrow ${finish === item.key ? 'active' : ''}`} key={item.key} onClick={() => setfinish(item.key)}><span>{item.name}</span></button>)}
       </section>
       <section className="group">
         <h2>TEXT</h2>

@@ -8,13 +8,14 @@ type Props = {
   tune: Tune | null
   view: string
   back: string
+  finish: string
   frame: { width: number; height: number }
   spin: boolean
   songon: boolean
   artiston: boolean
 }
 
-export function View({ stage, tune, view, back, frame, spin, songon, artiston }: Props) {
+export function View({ stage, tune, view, back, finish, frame, spin, songon, artiston }: Props) {
   const holder = useRef<HTMLDivElement>(null)
   const [ready, setready] = useState(false)
   const [note, setnote] = useState('')
@@ -57,6 +58,7 @@ export function View({ stage, tune, view, back, frame, spin, songon, artiston }:
   useEffect(() => { if (ready) stage.current?.view(view) }, [ready, stage, view])
   useEffect(() => { if (ready) stage.current?.format(frame.width, frame.height) }, [ready, stage, frame])
   useEffect(() => { if (ready) stage.current?.backdrop(back) }, [ready, stage, back])
+  useEffect(() => { if (ready) stage.current?.finish(finish) }, [ready, stage, finish])
   useEffect(() => { if (ready) stage.current?.play(spin) }, [ready, stage, spin])
   useEffect(() => { if (ready) stage.current?.caption(tune?.song ?? 'Pick a song', tune?.artist ?? 'Aryan Madan', songon, artiston) }, [ready, stage, tune, songon, artiston])
 

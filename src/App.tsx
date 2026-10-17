@@ -15,6 +15,7 @@ function App() {
   const [tune, settune] = useState<Tune | null>(null)
   const [view, setview] = useState(0)
   const [back, setback] = useState(0)
+  const [finish, setfinish] = useState('color')
   const [frame, setframe] = useState(0)
   const [spin, setspin] = useState(true)
   const [songon, setsongon] = useState(true)
@@ -119,9 +120,9 @@ function App() {
   return (
     <main className="page">
       <Head word={word} setword={setword} find={find} expanded={expanded} hits={hits} finding={busy === 'search'} status={status} pick={pick} />
-      <Side tune={tune} busy={busy} note={note} view={view} setview={setview} back={back} setback={setback} frame={frame} setframe={setframe} spin={spin} setspin={setspin} songon={songon} setsongon={setsongon} artiston={artiston} setartiston={setartiston} loop={loop} setloop={setloop} progress={progress} run={run} />
+      <Side tune={tune} busy={busy} note={note} view={view} setview={setview} back={back} setback={setback} finish={finish} setfinish={setfinish} frame={frame} setframe={setframe} spin={spin} setspin={setspin} songon={songon} setsongon={setsongon} artiston={artiston} setartiston={setartiston} loop={loop} setloop={setloop} progress={progress} run={run} />
       <section className="space" aria-label="Vinyl and cover preview">
-        <View key={size.key} stage={stage} tune={tune} view={views[view].key} back={backs[back].key} frame={size} spin={spin} songon={songon} artiston={artiston} />
+        <View key={size.key} stage={stage} tune={tune} view={views[view].key} back={backs[back].key} finish={finish} frame={size} spin={spin} songon={songon} artiston={artiston} />
       </section>
       <audio ref={audio} onPlay={() => setplaying(true)} onPause={() => setplaying(false)} onTimeUpdate={(event) => settime(event.currentTarget.currentTime)} onLoadedMetadata={(event) => setduration(event.currentTarget.duration || 0)} onEnded={() => setplaying(false)} />
       <Foot tune={tune} playing={playing} time={time} duration={duration} toggle={toggle} reset={reset} />

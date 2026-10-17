@@ -149,6 +149,10 @@ export class Stage {
     this.spinning = on
   }
 
+  finish(style: string) {
+    this.disc.finish(style)
+  }
+
   format(width: number, height: number) {
     this.ratio = width / height
     this.resize()
