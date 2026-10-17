@@ -24,7 +24,7 @@ export const backs = [
 ]
 
 export const ratios = [
-  { key: 'story', name: 'Story', label: '9:16', width: 2160, height: 3840 },
+  { key: 'story', name: 'Story', label: '9:16', width: 1080, height: 1920 },
   { key: 'portrait', name: 'Portrait', label: '4:5', width: 2160, height: 2700 },
   { key: 'square', name: 'Square', label: '1:1', width: 2160, height: 2160 },
 ]
