@@ -50,7 +50,7 @@ export function Head({ word, setword, find, expanded, hits, finding, status, pic
 
   return (
     <header className={`head ${open ? 'mobileopen' : ''}`}>
-      <a className="brand" href="#">VINYL</a>
+      <a className="brand" href="#"><span>VINYL</span></a>
       <div className="find">
         <label className="search" ref={field}>
           <button className="searchicon" type="button" onClick={click} aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.7" /><path d="m16 16 5 5" /></svg></button>
